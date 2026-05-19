@@ -75,7 +75,9 @@ def execute(
     """
     t0 = time.time()
 
-    # Build the test harness
+    # Tests with '_script' field have the solution embedded (HumanEval/MBPP format).
+    # In that case the brain's `code` is appended to the embedded solution for scoring,
+    # OR we run the embedded script directly to get the expected behavior.
     harness = _build_harness(code, tests)
 
     try:
