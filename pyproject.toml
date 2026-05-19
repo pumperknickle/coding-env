@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "coding-env"
+version = "0.1.0"
+description = "Multi-turn code execution environment (RLEF-style) as an ecoframe EnvironmentProtocol"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "ecoframe>=0.1.0",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+problems = ["datasets>=2.0"]   # for HuggingFace problem loading
+dev      = ["pytest>=7.0"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/coding_env"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
